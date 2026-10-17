@@ -13,10 +13,9 @@
   <meta property="og:image" content="https://kodasdream.github.io/colorogue-site/images/board-rainbow.webp">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu+Sans:wght@400;500;600;700;800&family=Ubuntu+Sans+Mono:wght@600&display=optional">
-  <link rel="stylesheet" href="css/site.css">
+  <link rel="preload" href="fonts/UbuntuSans-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/UbuntuSans-700.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/site.css?v=2">
 </head>
 <body>
 <canvas class="sea" aria-hidden="true"></canvas>
@@ -89,20 +88,20 @@
 
           <ul class="stats" aria-label="The game in numbers">
             <li class="stat">
-              <span class="tile big" style="--c-base:#F9D51F;--c-soft:#FAEFB7;--c-deep:#7A5E00">5&times;5</span>
-              <span class="stat-label">tiles on one board</span>
+              <canvas class="stat-tile" data-tile data-colour="gold" data-num="25" width="154" height="154" aria-hidden="true"></canvas>
+              <span class="stat-label"><span class="visually-hidden">25: </span>tiles on one 5&times;5 board</span>
             </li>
             <li class="stat">
-              <span class="tile big" style="--c-base:#11B6D0;--c-soft:#BBEFF7;--c-deep:#044D58">9</span>
-              <span class="stat-label">boards to play on</span>
+              <canvas class="stat-tile" data-tile data-colour="cyan" data-num="9" width="154" height="154" aria-hidden="true"></canvas>
+              <span class="stat-label"><span class="visually-hidden">9: </span>boards to play on</span>
             </li>
             <li class="stat">
-              <span class="tile big" style="--c-base:#F4568F;--c-soft:#FAC9DC;--c-deep:#A8124F">127</span>
-              <span class="stat-label">rounds playtesters have reached</span>
+              <canvas class="stat-tile" data-tile data-colour="rose" data-num="127" width="154" height="154" aria-hidden="true"></canvas>
+              <span class="stat-label"><span class="visually-hidden">127: </span>rounds playtesters have reached</span>
             </li>
             <li class="stat">
-              <span class="tile big" style="--c-base:#96C723;--c-soft:#E3F1C0;--c-deep:#435A0C">3k</span>
-              <span class="stat-label">hours to 100% of the achievements, roughly</span>
+              <canvas class="stat-tile" data-tile data-colour="lime" data-num="3000" width="154" height="154" aria-hidden="true"></canvas>
+              <span class="stat-label"><span class="visually-hidden">3,000: </span>hours to 100% of the achievements, roughly</span>
             </li>
           </ul>
         </div>
@@ -269,6 +268,7 @@
     <button class="bp-close" type="button">Close</button>
   </div>
 </div>
+<canvas id="board-tip" class="board-tip" aria-hidden="true" hidden></canvas>
 
 <dialog id="lightbox" class="lightbox" aria-label="Screenshot">
   <form method="dialog" class="lightbox-bar">
@@ -278,7 +278,7 @@
   <p id="lightbox-cap"></p>
 </dialog>
 
-<script src="js/game-render.js" defer></script>
-<script src="js/site.js" defer></script>
+<script src="js/game-render.js?v=2" defer></script>
+<script src="js/site.js?v=2" defer></script>
 </body>
 </html>
