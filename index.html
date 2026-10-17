@@ -15,10 +15,11 @@
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu+Sans:wght@400;500;600;700;800&family=Ubuntu+Sans+Mono:wght@600&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu+Sans:wght@400;500;600;700;800&family=Ubuntu+Sans+Mono:wght@600&display=optional">
   <link rel="stylesheet" href="css/site.css">
 </head>
 <body>
+<canvas class="sea" aria-hidden="true"></canvas>
 
 <a class="skip" href="#main">Skip to content</a>
 
@@ -40,17 +41,10 @@
 
   <!-- 1. Hero -->
   <section class="hero" id="top" aria-labelledby="hero-title">
-    <div class="deco deco-hero" aria-hidden="true">
-      <span class="tile t-a" style="--c-base:#F9D51F;--c-soft:#FAEFB7;--c-deep:#7A5E00">5</span>
-      <span class="tile t-b" style="--c-base:#11B6D0;--c-soft:#BBEFF7;--c-deep:#044D58">8</span>
-      <span class="tile t-c" style="--c-base:#F4568F;--c-soft:#FAC9DC;--c-deep:#A8124F">23</span>
-      <span class="tile t-d" style="--c-base:#96C723;--c-soft:#E3F1C0;--c-deep:#435A0C">1</span>
-      <span class="tile t-e" style="--c-base:#6B58E4;--c-soft:#C6BFF2;--c-deep:#2714A3">9</span>
-    </div>
 
     <div class="wrap hero-in">
       <div class="hero-copy">
-        <h1 class="wordmark" id="hero-title">ColoRogue</h1>
+        <h1 class="wordmark" id="hero-title"><span class="wm-text">ColoRogue</span><canvas class="wordmark-canvas" data-wordmark aria-hidden="true"></canvas></h1>
         <p class="lede">A hardcore deckbuilder roguelike played on a 5x5 board of colourful tiles.</p>
         <div class="cta">
           <a class="btn btn-primary" href="https://fog455.itch.io/colorogue">
@@ -146,7 +140,7 @@
     <section class="section" id="leaderboard" aria-labelledby="lb-title">
       <div class="wrap">
         <h2 class="heading" id="lb-title">Leaderboard</h2>
-        <p class="sub">The best runs from the playtest so far. Scores use the game's own notation, so 8e28914 means 8 with 28,914 zeros after it.</p>
+        <p class="sub">The best runs from the playtest so far. Scores use the game's own notation, so 8e28914 means 8 with 28,914 zeros after it. Hover or tap a run to see its final board.</p>
 
         <!--
           Source: src/core/leaderboard.ts in the game's private repository (the LEADERBOARD array,
@@ -170,30 +164,30 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
+              <tr data-run="0">
                 <td data-label="Rank" class="rank">1</td>
                 <td data-label="Player">Damian</td>
-                <td data-label="Board"><span class="dot" style="--c-base:#F96F06;--c-deep:#7A3500"></span>Amber Board</td>
+                <td data-label="Board"><button class="board-btn" type="button" aria-expanded="false" aria-controls="board-preview"><span class="dot" style="--c-base:#F96F06;--c-deep:#7A3500"></span>Amber Board</button></td>
                 <td data-label="Mode"><span class="mode hard">Hardcore</span></td>
                 <td data-label="Round" class="num">128</td>
                 <td data-label="Score" class="num score">8e28914</td>
                 <td data-label="Build" class="num">9883</td>
                 <td data-label="Seed" class="seed">0AZ2QY7</td>
               </tr>
-              <tr>
+              <tr data-run="1">
                 <td data-label="Rank" class="rank">2</td>
                 <td data-label="Player">Damian</td>
-                <td data-label="Board"><span class="dot" style="--c-base:#96C723;--c-deep:#435A0C"></span>Lime Board</td>
+                <td data-label="Board"><button class="board-btn" type="button" aria-expanded="false" aria-controls="board-preview"><span class="dot" style="--c-base:#96C723;--c-deep:#435A0C"></span>Lime Board</button></td>
                 <td data-label="Mode"><span class="mode hard">Hardcore</span></td>
                 <td data-label="Round" class="num">128</td>
                 <td data-label="Score" class="num score">8e20181</td>
                 <td data-label="Build" class="num">9791</td>
                 <td data-label="Seed" class="seed">1P8FNH8</td>
               </tr>
-              <tr>
+              <tr data-run="2">
                 <td data-label="Rank" class="rank">3</td>
                 <td data-label="Player">fog (dev)</td>
-                <td data-label="Board"><span class="dot" style="--c-base:#F9D51F;--c-deep:#947B00"></span>Golden Board</td>
+                <td data-label="Board"><button class="board-btn" type="button" aria-expanded="false" aria-controls="board-preview"><span class="dot" style="--c-base:#F9D51F;--c-deep:#947B00"></span>Golden Board</button></td>
                 <td data-label="Mode"><span class="mode norm">Normal</span></td>
                 <td data-label="Round" class="num">47</td>
                 <td data-label="Score" class="num score">1e528</td>
@@ -268,6 +262,14 @@
   </div>
 </footer>
 
+<div id="board-preview" class="board-preview" hidden role="region" aria-label="Final board of this run">
+  <canvas class="bp-canvas" aria-hidden="true"></canvas>
+  <div class="bp-foot">
+    <p class="bp-cap"></p>
+    <button class="bp-close" type="button">Close</button>
+  </div>
+</div>
+
 <dialog id="lightbox" class="lightbox" aria-label="Screenshot">
   <form method="dialog" class="lightbox-bar">
     <button class="lightbox-close" value="close" aria-label="Close">Close</button>
@@ -276,6 +278,7 @@
   <p id="lightbox-cap"></p>
 </dialog>
 
+<script src="js/game-render.js" defer></script>
 <script src="js/site.js" defer></script>
 </body>
 </html>

@@ -143,6 +143,23 @@ strong {
   top: 12px;
 }
 
+/* The sea: the title screen's background, drawn by the game's own code (js/game-render.js). */
+.sea {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  pointer-events: none;
+}
+
+main,
+.foot {
+  position: relative;
+  z-index: 1;
+}
+
 /* ------------------------------------------------------------------ */
 /* Raised slabs and buttons                                            */
 /* ------------------------------------------------------------------ */
@@ -306,18 +323,31 @@ strong {
 }
 
 .hero-copy {
-  max-width: 760px;
+  max-width: 920px;
 }
 
+/* The wordmark box. Its aspect is the game's wordmark window (src-bundle/entry.ts), so the canvas
+   fits without shifting the page; the text inside is only the fallback until the game's
+   own wordmark is drawn. */
 .wordmark {
-  display: inline-block;
-  margin: 0;
-  padding: 0 0.08em 0.04em 0;
-  white-space: nowrap;
-  font-size: clamp(60px, 17vw, 164px);
+  --wm: min(92vw, 880px);
+  position: relative;
+  display: block;
+  width: var(--wm);
+  aspect-ratio: 1640 / 380;
+  margin: 0 auto;
+  font-size: calc(var(--wm) * 0.2);
   font-weight: 800;
-  line-height: 0.98;
+  line-height: 1;
   letter-spacing: -0.025em;
+  white-space: nowrap;
+}
+
+.wm-text {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
   color: transparent;
   background: linear-gradient(
     100deg,
@@ -333,9 +363,27 @@ strong {
   );
   -webkit-background-clip: text;
   background-clip: text;
-  filter:
-    drop-shadow(0 6px 0 rgba(64, 80, 114, 0.14))
-    drop-shadow(0 14px 18px rgba(64, 80, 114, 0.16));
+}
+
+.wordmark-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  pointer-events: none;
+}
+
+/* Once the game's wordmark is on the canvas, the fallback text is only for screen readers. */
+.wordmark.is-live .wm-text {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  background: none;
+  color: transparent;
 }
 
 .lede {
@@ -370,59 +418,6 @@ strong {
   font-size: 14px;
   color: var(--ink-faint);
   text-align: center;
-}
-
-/* Decorative tiles: the game's own motif, kept off the copy */
-
-.deco {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-}
-
-.deco .tile {
-  position: absolute;
-  width: var(--s, 72px);
-  height: var(--s, 72px);
-  font-size: calc(var(--s, 72px) * 0.42);
-  transform: rotate(var(--r, 0deg));
-  opacity: 0.9;
-}
-
-.t-a {
-  --s: 76px;
-  --r: -9deg;
-  left: 3%;
-  top: 9%;
-}
-
-.t-b {
-  --s: 92px;
-  --r: 8deg;
-  right: 4%;
-  top: 6%;
-}
-
-.t-c {
-  --s: 62px;
-  --r: 5deg;
-  left: 5%;
-  top: 56%;
-}
-
-.t-d {
-  --s: 70px;
-  --r: -6deg;
-  right: 6%;
-  top: 50%;
-}
-
-.t-e {
-  --s: 52px;
-  --r: 12deg;
-  left: 14%;
-  top: 88%;
 }
 
 /* A tile: a coloured squircle, a number in its deep ink, and a light lip */
@@ -605,7 +600,30 @@ strong {
   border-top: 0;
 }
 
+.board-table tbody tr[data-run] {
+  cursor: pointer;
+}
+
 .board-table tbody tr:hover td {
+  background: var(--surface-lo);
+}
+
+.board-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+  margin: -6px -10px;
+  padding: 6px 10px;
+  border: 0;
+  border-radius: 999px;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.board-btn[aria-expanded="true"] {
   background: var(--surface-lo);
 }
 
@@ -644,6 +662,7 @@ strong {
 
 .dot {
   display: inline-block;
+  flex: 0 0 auto;
   width: 14px;
   height: 14px;
   margin-right: 10px;
@@ -676,6 +695,71 @@ strong {
   margin: 14px 6px 0;
   font-size: 14px;
   color: var(--ink-soft);
+}
+
+/* The board preview: the final board, drawn by the game, over the sea. Fixed, so it never moves the page. */
+.board-preview {
+  position: fixed;
+  z-index: 40;
+  top: 0;
+  left: 0;
+  width: min(300px, calc(100vw - 24px));
+  pointer-events: none;
+}
+
+.board-preview[hidden] {
+  display: none;
+}
+
+.board-preview.is-pinned {
+  pointer-events: auto;
+}
+
+.bp-canvas {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 24px;
+  filter: drop-shadow(0 6px 14px rgba(60, 76, 110, 0.18));
+}
+
+.bp-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.bp-cap {
+  margin: 0;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: var(--slab-lip), var(--surface);
+  box-shadow: 3px 4px 10px var(--shadow-soft), -3px -3px 8px var(--hi);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink-soft);
+  font-variant-numeric: tabular-nums;
+}
+
+.bp-close {
+  display: none;
+  min-height: 34px;
+  padding: 4px 14px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--slab-lip), var(--surface);
+  box-shadow: 3px 4px 10px var(--shadow-soft), -3px -3px 8px var(--hi);
+  color: var(--ink);
+  font: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.board-preview.is-pinned .bp-close {
+  display: inline-block;
 }
 
 /* Investors and creators */
@@ -901,13 +985,6 @@ a.contact-v {
   }
 }
 
-@media (max-width: 900px) {
-  /* The hero tiles sit beside the copy; below this width they would reach it. */
-  .deco {
-    display: none;
-  }
-}
-
 @media (max-width: 760px) {
   .two {
     grid-template-columns: 1fr;
@@ -929,11 +1006,6 @@ a.contact-v {
     margin-left: 0;
   }
 
-  .deco .t-c,
-  .deco .t-d,
-  .deco .t-e {
-    display: none;
-  }
 }
 
 @media (max-width: 720px) {
@@ -1153,17 +1225,6 @@ a.contact-v {
   .foot-in {
     flex-direction: column;
     align-items: flex-start;
-  }
-}
-
-@media (max-width: 380px) {
-  .wordmark {
-    font-size: 56px;
-  }
-
-  .t-a,
-  .t-b {
-    --s: 56px;
   }
 }
 
