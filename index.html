@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ColoRogue, a hardcore deckbuilder roguelike</title>
+  <meta name="description" content="ColoRogue is a hardcore deckbuilder roguelike played on a 5x5 board of colourful tiles. Play it on itch.io or join the Discord.">
+  <meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#eaeef6">
+  <meta property="og:title" content="ColoRogue, a hardcore deckbuilder roguelike">
+  <meta property="og:description" content="A hardcore deckbuilder roguelike played on a 5x5 board of colourful tiles.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://kodasdream.github.io/colorogue-site/images/board-rainbow.webp">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu+Sans:wght@400;500;600;700;800&family=Ubuntu+Sans+Mono:wght@600&display=swap">
+  <link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <div class="wrap topbar-in">
+    <a class="brand" href="#top" aria-label="ColoRogue, back to the top">ColoRogue</a>
+    <nav class="links" aria-label="On this page">
+      <a href="#about">About</a>
+      <a href="#leaderboard">Leaderboard</a>
+      <a href="#investors">Investors</a>
+      <a href="#creators">Creators</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="pill" href="https://fog455.itch.io/colorogue">Play</a>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- 1. Hero -->
+  <section class="hero" id="top" aria-labelledby="hero-title">
+    <div class="deco deco-hero" aria-hidden="true">
+      <span class="tile t-a" style="--c-base:#F9D51F;--c-soft:#FAEFB7;--c-deep:#7A5E00">5</span>
+      <span class="tile t-b" style="--c-base:#11B6D0;--c-soft:#BBEFF7;--c-deep:#044D58">8</span>
+      <span class="tile t-c" style="--c-base:#F4568F;--c-soft:#FAC9DC;--c-deep:#A8124F">23</span>
+      <span class="tile t-d" style="--c-base:#96C723;--c-soft:#E3F1C0;--c-deep:#435A0C">1</span>
+      <span class="tile t-e" style="--c-base:#6B58E4;--c-soft:#C6BFF2;--c-deep:#2714A3">9</span>
+    </div>
+
+    <div class="wrap hero-in">
+      <div class="hero-copy">
+        <h1 class="wordmark" id="hero-title">ColoRogue</h1>
+        <p class="lede">A hardcore deckbuilder roguelike played on a 5x5 board of colourful tiles.</p>
+        <div class="cta">
+          <a class="btn btn-primary" href="https://fog455.itch.io/colorogue">
+            <span class="btn-mark" style="--c-base:#F8580F;--c-soft:#FCAB7E;--c-deep:#8D2800" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M8 5.5v13l10.5-6.5z" fill="currentColor"/></svg>
+            </span>
+            <span>Play on itch.io</span>
+          </a>
+          <a class="btn" href="https://discord.gg/y36dCe4mAJ">
+            <span class="btn-mark" style="--c-base:#6B58E4;--c-soft:#C6BFF2;--c-deep:#2714A3" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M5 6.5a2.5 2.5 0 0 1 2.5-2.5h9A2.5 2.5 0 0 1 19 6.5v7a2.5 2.5 0 0 1-2.5 2.5H11l-3.6 3v-3H7.5A2.5 2.5 0 0 1 5 13.5z" fill="currentColor"/></svg>
+            </span>
+            <span>Join the Discord</span>
+          </a>
+        </div>
+      </div>
+
+      <figure class="shot hero-shot">
+        <button class="shot-open" type="button" data-full="images/board-rainbow.webp" data-caption="A Rainbow Board in play: a 5x5 grid of colourful tiles, each showing a number, with modifier icons on some of them and a full tool inventory.">
+          <img src="images/board-rainbow.webp" width="1440" height="900" alt="The Rainbow Board in play: a 5x5 grid of colourful tiles, each showing a number, with modifier icons on some of them, and the square and tool inventories on the right.">
+        </button>
+        <figcaption>The Rainbow Board, round one</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <div id="content">
+
+    <!-- 2. About -->
+    <section class="section" id="about" aria-labelledby="about-title">
+      <div class="wrap">
+        <h2 class="heading" id="about-title">About the game</h2>
+        <div class="about">
+          <div class="prose">
+            <p>I have been working for over a year on a hardcore deckbuilder roguelike called ColoRogue.</p>
+            <p>It is played on a 5x5 board of colourful tiles. You strategically align them and interact with them in various ways to meet the exponentially higher target score every round.</p>
+            <p>It combines themes of colour theory, fishing, hell and heaven, and ancient mythology.</p>
+            <p>Getting to 100% of the achievements takes about 3,000 hours. Playtesters often message me that the game shows up in their dreams. Several said it cured their Balatro habit, because they are now hooked on this one instead.</p>
+            <p>Without spoilers, the story follows a fisherman, and you learn more about it the further you get.</p>
+            <p>It is a completely solo project. I made all of it myself.</p>
+          </div>
+
+          <ul class="stats" aria-label="The game in numbers">
+            <li class="stat">
+              <span class="tile big" style="--c-base:#F9D51F;--c-soft:#FAEFB7;--c-deep:#7A5E00">5&times;5</span>
+              <span class="stat-label">tiles on one board</span>
+            </li>
+            <li class="stat">
+              <span class="tile big" style="--c-base:#11B6D0;--c-soft:#BBEFF7;--c-deep:#044D58">9</span>
+              <span class="stat-label">boards to play on</span>
+            </li>
+            <li class="stat">
+              <span class="tile big" style="--c-base:#F4568F;--c-soft:#FAC9DC;--c-deep:#A8124F">127</span>
+              <span class="stat-label">rounds playtesters have reached</span>
+            </li>
+            <li class="stat">
+              <span class="tile big" style="--c-base:#96C723;--c-soft:#E3F1C0;--c-deep:#435A0C">3k</span>
+              <span class="stat-label">hours to 100% of the achievements, roughly</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="gallery">
+          <figure class="shot">
+            <button class="shot-open" type="button" data-full="images/board-violet.webp" data-caption="The Violet Board: an Ascendant at the centre, violet tiles on the corners and a Watering Can to grow it.">
+              <img src="images/board-violet.webp" width="1440" height="900" loading="lazy" alt="The Violet Board at the start of a run: violet tiles with modifier icons on the corners and the centre, the other tiles white and showing numbers from 1 to 5, and a Watering Can in the tool inventory.">
+            </button>
+            <figcaption>The Violet Board, opening round</figcaption>
+          </figure>
+          <figure class="shot">
+            <button class="shot-open" type="button" data-full="images/title-screen.webp" data-caption="The title screen, with the sea and the falling tiles.">
+              <img src="images/title-screen.webp" width="1440" height="900" loading="lazy" alt="The title screen: the ColoRogue wordmark in a rainbow gradient over a pale sea, with the menu panels for New Run, Saves, Stats, Collection and How to Play.">
+            </button>
+            <figcaption>The title screen</figcaption>
+          </figure>
+          <figure class="shot">
+            <button class="shot-open" type="button" data-full="images/choose-board.webp" data-caption="Choose your board: the board carousel, the difficulty and the target curve.">
+              <img src="images/choose-board.webp" width="1440" height="900" loading="lazy" alt="The Choose your board screen, showing the White Board preview, the starting gold and tools, the Normal and Hardcore difficulties and the target curve.">
+            </button>
+            <figcaption>Choosing a board</figcaption>
+          </figure>
+          <figure class="shot">
+            <button class="shot-open" type="button" data-full="images/collection.webp" data-caption="The collection: every modifier, tool, blessing, burden and upgrade, with its rarity.">
+              <img src="images/collection.webp" width="1440" height="900" loading="lazy" alt="The Collection screen: a grid of modifier cards with their names and short descriptions, and tabs for modifiers, tools, blessings, burdens and upgrades.">
+            </button>
+            <figcaption>The collection</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Leaderboard -->
+    <section class="section" id="leaderboard" aria-labelledby="lb-title">
+      <div class="wrap">
+        <h2 class="heading" id="lb-title">Leaderboard</h2>
+        <p class="sub">The best runs from the playtest so far. Scores use the game's own notation, so 8e28914 means 8 with 28,914 zeros after it.</p>
+
+        <!--
+          Source: src/core/leaderboard.ts in the game's private repository (the LEADERBOARD array,
+          ordered the way leaderboardOrder() orders it: deepest round first, then the bigger score).
+          Board names and colours: src/core/boards.ts (boardId 'boosted' is shown as Lime Board).
+          Typed in by hand for now. When a run changes there, change its row here too.
+        -->
+        <div class="panel table-panel">
+          <table class="board-table">
+            <caption class="visually-hidden">Best runs from the playtest, with board, mode, round, score, build and seed</caption>
+            <thead>
+              <tr>
+                <th scope="col">Rank</th>
+                <th scope="col">Player</th>
+                <th scope="col">Board</th>
+                <th scope="col">Mode</th>
+                <th scope="col" class="num">Round</th>
+                <th scope="col" class="num">Score</th>
+                <th scope="col" class="num">Build</th>
+                <th scope="col">Seed</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td data-label="Rank" class="rank">1</td>
+                <td data-label="Player">Damian</td>
+                <td data-label="Board"><span class="dot" style="--c-base:#F96F06;--c-deep:#7A3500"></span>Amber Board</td>
+                <td data-label="Mode"><span class="mode hard">Hardcore</span></td>
+                <td data-label="Round" class="num">128</td>
+                <td data-label="Score" class="num score">8e28914</td>
+                <td data-label="Build" class="num">9883</td>
+                <td data-label="Seed" class="seed">0AZ2QY7</td>
+              </tr>
+              <tr>
+                <td data-label="Rank" class="rank">2</td>
+                <td data-label="Player">Damian</td>
+                <td data-label="Board"><span class="dot" style="--c-base:#96C723;--c-deep:#435A0C"></span>Lime Board</td>
+                <td data-label="Mode"><span class="mode hard">Hardcore</span></td>
+                <td data-label="Round" class="num">128</td>
+                <td data-label="Score" class="num score">8e20181</td>
+                <td data-label="Build" class="num">9791</td>
+                <td data-label="Seed" class="seed">1P8FNH8</td>
+              </tr>
+              <tr>
+                <td data-label="Rank" class="rank">3</td>
+                <td data-label="Player">fog (dev)</td>
+                <td data-label="Board"><span class="dot" style="--c-base:#F9D51F;--c-deep:#947B00"></span>Golden Board</td>
+                <td data-label="Mode"><span class="mode norm">Normal</span></td>
+                <td data-label="Round" class="num">47</td>
+                <td data-label="Score" class="num score">1e528</td>
+                <td data-label="Build" class="num">9893</td>
+                <td data-label="Seed" class="seed">3BQ5BQ7</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="note">The fog (dev) run was still in progress when these numbers were taken, so its round is where it stood then.</p>
+      </div>
+    </section>
+
+    <!-- 4. Investors -->
+    <section class="section" id="investors" aria-labelledby="inv-title">
+      <div class="wrap two">
+        <article class="panel card">
+          <h2 class="heading small" id="inv-title">For investors</h2>
+          <p>Investors are welcome to get in touch about equity deals, sponsorships and similar partnerships.</p>
+          <p>Email <a href="mailto:cservidzsombor@gmail.com?subject=ColoRogue%20investors">cservidzsombor@gmail.com</a> or message <strong>pusztitopako47</strong> on Discord.</p>
+        </article>
+
+        <!-- 5. Creators and game developers -->
+        <article class="panel card" id="creators" aria-labelledby="cr-title">
+          <h2 class="heading small" id="cr-title">For creators and game developers</h2>
+          <p>Making videos, streams or games? Let's promote each other.</p>
+          <p>One idea: ColoRogue includes a nod or reference to your game, and in return your game includes a reference to ColoRogue. Simple, and it puts each game in front of the other's audience.</p>
+          <p>That is one idea, and I am open to others. Get in touch by email at <a href="mailto:cservidzsombor@gmail.com?subject=ColoRogue%20creators">cservidzsombor@gmail.com</a> or on Discord.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- 6. Contact -->
+    <section class="section" id="contact" aria-labelledby="contact-title">
+      <div class="wrap">
+        <h2 class="heading" id="contact-title">Contact</h2>
+        <div class="panel contact">
+          <div class="contact-row">
+            <span class="contact-k">Email</span>
+            <a class="contact-v" href="mailto:cservidzsombor@gmail.com">cservidzsombor@gmail.com</a>
+          </div>
+          <div class="contact-row">
+            <span class="contact-k">Discord</span>
+            <span class="contact-v">pusztitopako47</span>
+            <button class="copy" type="button" data-copy="pusztitopako47" data-label="Copy">
+              <span class="copy-label">Copy</span>
+            </button>
+          </div>
+          <div class="contact-row">
+            <span class="contact-k">Community</span>
+            <a class="contact-v" href="https://discord.gg/y36dCe4mAJ">discord.gg/y36dCe4mAJ</a>
+          </div>
+          <p class="credit">Made by Zsombor, solo developer.</p>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-in">
+    <div class="foot-brand">
+      <span class="brand">ColoRogue</span>
+      <span class="foot-year">2026</span>
+    </div>
+    <nav class="foot-links" aria-label="Footer">
+      <a href="https://fog455.itch.io/colorogue">itch.io</a>
+      <a href="https://discord.gg/y36dCe4mAJ">Discord</a>
+      <a href="mailto:cservidzsombor@gmail.com">Email</a>
+    </nav>
+  </div>
+</footer>
+
+<dialog id="lightbox" class="lightbox" aria-label="Screenshot">
+  <form method="dialog" class="lightbox-bar">
+    <button class="lightbox-close" value="close" aria-label="Close">Close</button>
+  </form>
+  <img id="lightbox-img" alt="">
+  <p id="lightbox-cap"></p>
+</dialog>
+
+<script src="js/site.js" defer></script>
+</body>
+</html>
