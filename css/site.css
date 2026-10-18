@@ -94,6 +94,8 @@
   --wrap: 1120px;
   --gutter: 20px;
   --r-panel: 28px;
+  /* The hero buttons. Their icon chips use this radius less the 8px gap, so the corners are concentric. */
+  --r-btn: 22px;
   --r-pill: 999px;
 
   /* Slabs: a face with a white lip, and a short shadow under the lower edge */
@@ -258,7 +260,7 @@ main {
   min-height: 62px;
   padding: 8px 28px 8px 8px;
   border: 0;
-  border-radius: var(--r-pill);
+  border-radius: var(--r-btn);
   background: var(--face);
   box-shadow: var(--slab);
   color: var(--ink);
@@ -284,14 +286,14 @@ main {
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.9) 0, rgba(255, 255, 255, 0) 22px), var(--surface-hi);
 }
 
-/* The icon chip is a circle, concentric with the pill's rounded end (8px in on every side of a 62px button). */
+/* The icon chip is a rounded square 8px in from the button's edge, so its corners are concentric with the button's. */
 .btn-mark {
   flex: 0 0 auto;
   display: grid;
   place-items: center;
   width: 46px;
   height: 46px;
-  border-radius: 50%;
+  border-radius: calc(var(--r-btn) - 8px);
   background: linear-gradient(135deg, var(--c-soft), var(--c-base));
   color: var(--c-deep);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.55);
@@ -312,12 +314,12 @@ main {
 /* Top bar                                                             */
 /* ------------------------------------------------------------------ */
 
-/* Nearly opaque, and not blurred: a blur on a sticky bar is recomputed for every frame of the sea behind it. */
+/* Translucent, and not blurred: a blur on a sticky bar is recomputed for every frame of the sea behind it. */
 .topbar {
   position: sticky;
   top: 0;
   z-index: 20;
-  background: rgba(234, 238, 246, 0.97);
+  background: rgba(234, 238, 246, 0.88);
   border-bottom: 1px solid var(--line);
 }
 
@@ -897,14 +899,6 @@ a.contact-v {
   color: var(--cherry-deep);
 }
 
-.credit {
-  margin: var(--s2) 0 0;
-  padding-top: var(--s2);
-  border-top: 1px solid var(--line);
-  font-size: 15px;
-  color: var(--ink-soft);
-}
-
 /* ------------------------------------------------------------------ */
 /* Footer                                                              */
 /* ------------------------------------------------------------------ */
@@ -954,6 +948,16 @@ a.contact-v {
 .foot-links a:hover {
   color: var(--ink);
   text-decoration: underline;
+}
+
+/* The credit sits in the page's bottom-right corner, under the footer links. */
+.foot-credit {
+  position: absolute;
+  right: var(--gutter);
+  bottom: var(--s2);
+  margin: 0;
+  font-size: 14px;
+  color: var(--ink-faint);
 }
 
 /* ------------------------------------------------------------------ */

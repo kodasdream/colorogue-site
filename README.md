@@ -20,7 +20,7 @@ The animated sea behind the page, the title wordmark, the About tiles and the le
   - `build.mjs`: builds `js/game-render.js` with the game repository's esbuild.
   - `stubs/`: small replacements for game modules that the public page does not need (see below).
 - `images/`: screenshots of the game.
-- `favicon.svg`: the tab icon.
+- `favicon.png`: the tab icon, the game's rose tile showing 13, drawn by the game's `drawSquare` and cropped to 64 pixels.
 
 ## What the bundle contains
 
